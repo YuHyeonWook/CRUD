@@ -1,0 +1,48 @@
+html {
+  --color-black: #0e111b;
+  --color-white: #fff;
+  --color-white-50: rgba(255, 255, 255, 0.5);
+  --color-white-30: rgba(255, 255, 255, 0.3);
+  --color-white-20: rgba(255, 255, 255, 0.2);
+  --color-white-10: rgba(255, 255, 255, 0.1);
+  --color-white-5: rgba(255, 255, 255, 0.05);
+  --color-primary: #fdc000;
+  --color-hover: #f86a05;
+  --color-area: #1c212e;
+}
+
+body {
+  font-size: 14px;
+  max-width: 1200px;
+}
+
+.contanier {
+  margin: 40px 20px;
+}
+.contanier #addNew {
+  display: inline;
+}
+.contanier input {
+  padding-left: 10px;
+}
+.contanier .subheading {
+  margin-top: 10rem;
+  border-bottom: 1px dashed gray;
+  font-weight: 600;
+  padding: 15px;
+}
+.contanier #tasks {
+  font-size: 20px;
+  overflow-y: scroll;
+  height: 500px;
+}
+.contanier #tasks div {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid gray;
+  display: flex;
+  gap: 30px;
+}
+.contanier #msg {
+  color: red;
+}/*# sourceMappingURL=style.css.map */
