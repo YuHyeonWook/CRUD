@@ -12,36 +12,64 @@ html {
 }
 
 body {
-  font-size: 14px;
   max-width: 1200px;
+  background-color: #f1f2f3;
 }
 
 .contanier {
   margin: 40px 20px;
 }
-.contanier #addNew {
-  display: inline;
+.contanier .contentBundle {
+  display: flex;
+  gap: 10px;
+  font-size: 16px;
 }
-.contanier input {
+.contanier .contentBundle #addNew button {
+  color: var(--color-white);
+  background-color: #0d6efd;
+  height: 30px;
+  border-radius: 0.5rem;
+}
+.contanier .contentBundle .search input {
+  height: 30px;
   padding-left: 10px;
+  border-radius: 0.5rem;
 }
-.contanier .subheading {
-  margin-top: 10rem;
-  border-bottom: 1px dashed gray;
+.contanier .contentBundle .search button {
+  height: 30px;
+  border-radius: 0.5rem;
+  color: var(--color-white);
+  background-color: #5c636a;
+}
+.contanier .main {
+  margin-top: 60px;
+}
+.contanier .main .subheading {
   font-weight: 600;
   padding: 15px;
 }
-.contanier #tasks {
-  font-size: 20px;
+.contanier .main #tasks {
+  background-color: #f7f7f8;
+  font-size: 18px;
   overflow-y: scroll;
-  height: 500px;
+  border: 10px solid #f7f7f8;
+  border-radius: 20px;
+  max-height: 500px;
 }
-.contanier #tasks div {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid gray;
+.contanier .main #tasks .contentBundle {
   display: flex;
-  gap: 30px;
+  align-items: center;
+  padding-top: 15px;
+  padding-bottom: 15x;
+  padding-left: 10px;
+  border-bottom: 1px solid rgb(219, 218, 218);
+  font-size: 18px;
+}
+.contanier .main #tasks .contentBundle .options {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 5px;
 }
 .contanier #msg {
   color: red;

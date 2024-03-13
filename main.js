@@ -5,8 +5,10 @@ const $addressInput = document.getElementById("addressInput");
 const $tasks = document.getElementById("tasks");
 const $add = document.getElementById("add");
 
-// 메시지 출력
+// 메시지
 const $msg = document.getElementById("msg");
+// 검색
+const $searchInput = document.getElementById("searchInput");
 
 $form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -30,7 +32,7 @@ const formValidation = () => {
   }
 };
 
-let data = {};
+const data = {};
 
 const successData = () => {
   data["text"] = $textInput.value;
@@ -40,19 +42,60 @@ const successData = () => {
 };
 
 /* 목록 생성 */
-let createTasks = () => {
+const createTasks = () => {
   $tasks.innerHTML += /* html */ `
-        <div>
-          <span class=''>${data.text}</span>
-          <span class='small text-secondary'>${data.date}</span>
-          <span>${data.address}</span>
+        <div class='contentBundle'>
+            <span >${data.text}</span>
+            <span class='small text-secondary'>${data.date}</span>
+            <span>${data.address}</span>
           <span class='options'>
-            <a>편집</a>
-            <a>삭제</a>
+            <span
+                onClick="editTasks(this)"
+                data-bs-toggle="modal"
+                data-bs-target="#form"
+                class="material-symbols-outlined"
+              >
+                edit
+              </span>
+            <span
+                onClick="deleteTasks(this)"
+                class="material-symbols-outlined"
+              >
+                delete
+              </span>
           </span>
         </div>
   `;
   resetForm();
+};
+
+/* 검색 기능*/
+$searchInput.addEventListener("input", (e) => {
+  const value = e.target.value.toLowerCase();
+  const tasks = document.querySelectorAll(".contentBundle");
+  tasks.forEach((task) => {
+    const taskText = task.children[0].textContent.toLowerCase();
+    if (taskText.includes(value)) {
+      task.style.display = "block";
+    } else {
+      task.style.display = "none";
+    }
+  });
+});
+
+/* 삭제 기능 */
+const deleteTasks = (e) => {
+  e.parentElement.parentElement.remove();
+};
+
+/* 수정 기능 */
+const editTasks = (e) => {
+  let selectedTask = e.parentElement.parentElement;
+  $textInput.value = selectedTask.children[0].innerHTML;
+  $dateInput.value = selectedTask.children[1].innerHTML;
+  $addressInput.value = selectedTask.children[2].innerHTML;
+
+  selectedTask.remove();
 };
 
 /* 폼 초기화 */
@@ -60,6 +103,4 @@ const resetForm = () => {
   $textInput.value = "";
   $dateInput.value = "";
   $addressInput.value = "";
-  $msg.innerHTML = "";
-  $textInput.focus(); // $textInput에 포커스 주기
 };

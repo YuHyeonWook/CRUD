@@ -11,41 +11,95 @@ html {
   --color-area: #1c212e;
 }
 body {
-  font-size: 14px;
   max-width: 1200px;
+  background-color: #f1f2f3;
 }
 
 .contanier {
+  $hi: 30px;
   margin: 40px 20px;
 
-  #addNew {
-    display: inline;
+  .loading {
+    width: 30px;
+    height: 30px;
+    margin: 30px auto;
+    border: 4px solid #1c212e;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: loader 1s infinite linear;
   }
-  input {
-    padding-left: 10px;
+  @keyframes loader {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 
-  .subheading {
-    margin-top: 10rem;
-
-    border-bottom: 1px dashed gray;
-    font-weight: 600;
-
-    padding: 15px;
+  .contentBundle {
+    display: flex;
+    gap: 10px;
+    font-size: 16px;
+    #addNew {
+      button {
+        color: var(--color-white);
+        background-color: #0d6efd;
+        height: $hi;
+        border-radius: 0.5rem;
+      }
+    }
+    .search {
+      input {
+        height: $hi;
+        padding-left: 10px;
+        border-radius: 0.5rem;
+      }
+      button {
+        height: $hi;
+        border-radius: 0.5rem;
+        color: var(--color-white);
+        background-color: #5c636a;
+      }
+    }
   }
 
-  #tasks {
-    font-size: 20px;
-    overflow-y: scroll;
-    height: 500px;
+  .main {
+    margin-top: 60px;
 
-    div {
-      padding-top: 20px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid gray;
+    .subheading {
+      font-weight: 600;
 
-      display: flex;
-      gap: 30px;
+      padding: 15px;
+    }
+
+    #tasks {
+      background-color: #f7f7f8;
+
+      font-size: 18px;
+      overflow-y: scroll;
+      border: 10px solid #f7f7f8;
+      border-radius: 20px;
+
+      max-height: 500px;
+
+      .contentBundle {
+        display: flex;
+        align-items: center;
+        padding-top: 15px;
+        padding-bottom: 15x;
+        padding-left: 10px;
+        border-bottom: 1px solid rgb(219, 218, 218);
+
+        font-size: 18px;
+
+        .options {
+          flex: 1;
+          display: flex;
+          justify-content: flex-end;
+          padding-right: 5px;
+        }
+      }
     }
   }
 
