@@ -8,6 +8,9 @@ const $add = document.getElementById("add");
 const $msg = document.getElementById("msg"); // 메시지
 
 const $searchInput = document.getElementById("searchInput"); // 검색
+const $file = document.getElementById("imgInput"); // 이미지
+const $img = document.querySelector(".img");
+
 // 로딩 애니메이션 생성
 const createLoadingAnimation = () => {
   const loadingDiv = document.createElement("div");
@@ -55,7 +58,6 @@ let successData = () => {
 
   localStorage.setItem("data", JSON.stringify(data));
   console.log(data);
-
   createTasks();
 };
 
@@ -108,7 +110,12 @@ $searchInput.addEventListener("input", (e) => {
 /* 삭제 기능 */
 let deleteTasks = (e) => {
   if (confirm("삭제 하시겠습니까?")) {
+    // e.parentElement.parentElement.remove();
+
     e.parentElement.parentElement.remove();
+    data.splice(e.parentElement.parentElement.id, 1);
+    localStorage.setItem("data", JSON.stringify(data));
+    console.log(data);
   }
 };
 
@@ -119,7 +126,9 @@ let editTasks = (e) => {
   $dateInput.value = selectedTask.children[1].innerHTML;
   $addressInput.value = selectedTask.children[2].innerHTML;
 
-  selectedTask.remove();
+  data.splice(e.parentElement.parentElement.id, 1);
+  localStorage.setItem("data", JSON.stringify(data));
+  // selectedTask.remove();
 };
 
 /* 폼 초기화 */
