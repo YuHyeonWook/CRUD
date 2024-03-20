@@ -18,35 +18,49 @@ html {
 
 body {
   background-color: #ebfbff;
+}
+
+.header {
+  background-color: #387ddf;
+  padding: 20px auto;
   display: flex;
   justify-content: center;
-  align-items: center;
+}
+.header .navigation {
+  overflow: hidden;
+}
+.header .navigation ul {
+  display: flex;
+  list-style-type: none;
+}
+.header .navigation ul li {
+  text-align: center;
+  padding-top: 10px;
+}
+.header .navigation ul li a {
+  text-decoration: none;
+  color: #f2f2f2;
+  font-size: 1.1rem;
+  padding: 20px 70px;
+}
+.header .navigation ul li a:hover {
+  background-color: #ebfbff;
+  color: black;
 }
 
 .contanier {
-  margin: 60px auto;
+  margin: 20px auto;
   width: 1400px;
+  /* 로딩 애니메이션 */
   /* tasks 목록 */
-}
-.contanier .loading {
-  width: 50px;
-  height: 50px;
-  border: 5px solid rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
-  margin: 50px auto;
-  border-top-color: #fff;
-  animation: spin 1s ease-in-out infinite;
-  -webkit-animation: spin 1s ease-in-out infinite;
-}
-@keyframes spin {
-  to {
-    -webkit-transform: rotate(360deg);
-  }
 }
 .contanier .inputBtnBundle {
   display: flex;
-  gap: 15px;
+  gap: 10px;
   font-size: 18px;
+}
+.contanier .inputBtnBundle #addNew button {
+  font-size: 16px;
 }
 .contanier .inputBtnBundle #addNew button:hover {
   opacity: 0.8;
@@ -54,6 +68,7 @@ body {
 }
 .contanier .inputBtnBundle #searchInput {
   border: none;
+  width: 30%;
 }
 .contanier .inputBtnBundle #searchInput:focus {
   border: 2px solid beige;
@@ -63,36 +78,27 @@ body {
   transform: scale(0.98);
 }
 .contanier .main {
-  margin-top: 60px;
+  margin-top: 40px;
 }
 .contanier .main .subheading {
   font-weight: 600;
-  padding: 15px;
+  padding: 5px;
 }
-.contanier .main #tasks {
-  background-color: #f7f7f8;
+.contanier .main table {
+  border: 1px solid #f7f7f8;
+}
+.contanier .main table thead tr {
   font-size: 18px;
+}
+.contanier .main table thead tr td {
+  text-align: center;
+  vertical-align: middle;
+}
+.contanier .main table #tasks {
+  font-size: 20px;
   overflow-y: scroll;
-  border: 10px solid #f7f7f8;
   border-radius: 20px;
-  max-height: 600px;
-}
-.contanier .main #tasks .contentBundle {
-  display: flex;
-  align-items: center;
-  padding-top: 15px;
-  padding-bottom: 15x;
-  padding-left: 10px;
-  border-bottom: 1px solid rgb(219, 218, 218);
-  gap: 15px;
-  font-size: 18px;
-}
-.contanier .main #tasks .contentBundle .options {
-  flex: 1;
-  display: flex;
-  justify-content: flex-end;
-  padding-right: 5px;
 }
 .contanier #msg {
   color: red;
-}/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=test.css.map */

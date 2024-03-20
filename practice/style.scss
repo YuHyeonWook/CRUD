@@ -14,13 +14,16 @@ html {
   box-sizing: border-box;
 }
 body {
-  max-width: 1200px;
   background-color: #ebfbff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .contanier {
   $hi: 30px;
-  margin: 40px 20px;
+  margin: 60px auto;
+  width: 1400px;
 
   .loading {
     width: 50px;
@@ -28,6 +31,7 @@ body {
     border: 5px solid rgba(255, 255, 255, 0.3);
     border-radius: 50%;
     margin: 50px auto;
+
     border-top-color: #fff;
     animation: spin 1s ease-in-out infinite;
     -webkit-animation: spin 1s ease-in-out infinite;
@@ -83,7 +87,7 @@ body {
       border: 10px solid #f7f7f8;
       border-radius: 20px;
 
-      max-height: 500px;
+      max-height: 600px;
       .contentBundle {
         display: flex;
         align-items: center;

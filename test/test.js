@@ -5,11 +5,11 @@ const $addressInput = document.getElementById("addressInput");
 const $tasks = document.getElementById("tasks");
 const $add = document.getElementById("add");
 const $cancel = document.getElementById("cancel");
-
-const $msg = document.getElementById("msg"); // 메시지
-
-const $searchInput = document.getElementById("searchInput"); // 검색
-const $file = document.getElementById("imgInput"); // 이미지
+const $MsgUsername = document.getElementById("MsgUsername");
+const $MsgDate = document.getElementById("MsgDate");
+const $MsgAddress = document.getElementById("MsgAddress");
+const $searchInput = document.getElementById("searchInput");
+const $file = document.getElementById("imgInput");
 const $img = document.querySelector(".img");
 
 /* 사진 편집 */
@@ -28,32 +28,39 @@ $file.addEventListener("change", (e) => {
   }
 });
 
-/* 로딩 애니메이션 생성 */
-const createLoadingAnimation = () => {
-  const loadingDiv = document.createElement("div");
-  loadingDiv.className = "loading";
-  $form.appendChild(loadingDiv);
-};
+// /* 로딩 애니메이션 생성 */
+// const createLoadingAnimation = () => {
+//   const loadingDiv = document.createElement("div");
+//   loadingDiv.className = "loading";
+//   $form.appendChild(loadingDiv);
+// };
 
-// 로딩 애니메이션 제거
-let removeLoadingAnimation = () => {
-  const loadingDiv = document.querySelector(".loading");
-  $form.removeChild(loadingDiv);
-};
+// // 로딩 애니메이션 제거
+// let removeLoadingAnimation = () => {
+//   const loadingDiv = document.querySelector(".loading");
+//   $form.removeChild(loadingDiv);
+// };
+
+/* 모달 제출 */
 $form.addEventListener("submit", (e) => {
   e.preventDefault();
-  createLoadingAnimation();
+  // createLoadingAnimation();
   formValidation();
-
-  // setTimeout(formValidation, 1000);
 });
 
 /* 유효성 검사 */
 let formValidation = () => {
-  removeLoadingAnimation(); // 유효성 검사 시작 전 로딩 애니메이션 제거
+  // removeLoadingAnimation(); // 유효성 검사 시작 전 로딩 애니메이션 제거
+  $MsgUsername.textContent = "";
+  $MsgDate.textContent = "";
+  $MsgAddress.textContent = "";
+
   if ($userName.value === "") {
-    console.log("failure");
-    $msg.innerHTML = "입력해주세요";
+    $MsgUsername.textContent = "이름을 입력해주세요.";
+  } else if ($dateInput.value === "") {
+    $MsgDate.textContent = "생년월일을 입력해주세요.";
+  } else if ($addressInput.value === "") {
+    $MsgAddress.textContent = "주소를 입력해주세요.";
   } else {
     console.log("success");
     successData();
@@ -91,15 +98,16 @@ let createTasks = () => {
     const row = document.createElement("tr");
     row.innerHTML = `
       <td>
-        <img src="${x.image}" alt="Preview" width="150" height="150">
+        <img src="${x.image}" alt="Preview" width="100" height="100">
       </td>
-      <td>${x.userName}</td>
-      <td>${x.date}</td>
-      <td>${x.address}</td>
-      <td>
-        <span onClick="editTasks(this, ${y})" data-bs-toggle="modal" data-bs-target="#form" class="material-symbols-outlined">edit</span>
-        <span onClick="deleteTasks(this, ${y})" class="material-symbols-outlined">delete</span>
-      </td>
+      <td class="align-middle">${x.userName}</td>
+      <td class="align-middle">${x.date}</td>
+      <td class="align-middle">${x.address}</td>
+      <td class="align-middle">
+      <span onClick="userProfile(this, ${y})" style="font-size: 2rem" class="material-symbols-outlined"> data_loss_prevention </span>
+        <span onClick="editTasks(this, ${y})" style="font-size: 2rem" data-bs-toggle="modal" data-bs-target="#form" class="material-symbols-outlined">edit</span>
+        <span onClick="deleteTasks(this, ${y})" style="font-size: 2rem" class="material-symbols-outlined">delete</span>
+        </td>
     `;
     tasksBody.appendChild(row);
   });
@@ -139,20 +147,6 @@ let resetForm = () => {
 // 취소 버튼 클릭 이벤트 리스너 추가
 $cancel.addEventListener("click", () => {
   resetForm();
-});
-
-/* 검색 기능 */
-$searchInput.addEventListener("input", (e) => {
-  const value = e.target.value.toLowerCase();
-  const rows = document.querySelectorAll("#tasks tr");
-  rows.forEach((row) => {
-    const userName = row.children[1].textContent.toLowerCase();
-    if (userName.includes(value)) {
-      row.style.display = "";
-    } else {
-      row.style.display = "none";
-    }
-  });
 });
 
 (() => {
